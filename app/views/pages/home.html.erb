@@ -1,3 +1,11 @@
 <div>
+  <% if current_user %>
+    <p>Welcome <%= current_user.email %>, you are <%= current_user.role %> </p>
+    <br>
+    <% if current_user.admin? %>
+      <p> There are <%= User.count %> users in the website</p>
+    <% end %>
+  <% end %>
   <h1 class="pt-12 text-center text-3xl">All Active Quizes</h1>
+
 </div>
