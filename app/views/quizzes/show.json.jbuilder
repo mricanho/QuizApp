@@ -1,1 +1,1 @@
-json.partial! "quizzes/quiz", quiz: @quiz
+json.partial! 'quizzes/quiz', quiz: @quiz

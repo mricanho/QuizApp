@@ -1,19 +1,18 @@
 FactoryBot.define do
-
   factory :answer do
     question { nil }
-    name { "MyString" }
+    name { 'MyString' }
   end
 
   factory :question do
     quiz { nil }
-    name { "MyString" }
+    name { 'MyString' }
     question_type { 1 }
     required { false }
   end
 
   factory :quiz do
-    name { "MyString" }
+    name { 'MyString' }
   end
 
   factory(:user) do
