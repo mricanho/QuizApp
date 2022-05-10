@@ -1,15 +1,37 @@
-<div class="mx-auto md:w-2/3 w-full flex">
+<div class="mx-auto md:w-2/3 w-full mt-16 text-center">
   <div class="mx-auto">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <%= render @quiz %>
+    <h1 class="mb-10">Quiz "<%= @quiz.name %>"</h1>
 
+    <% @quiz.questions.each do |question| %>
+      <h2><%= question.name %></h2>
+
+      <% case question.question_type %>
+      <% when 'single_choice' %>
+        <% question.answers.each do |answer| %>
+          <p>
+            <%= radio_button_tag question.id, answer.id %>
+            <%= answer.name %>
+          </p>
+        <% end %>
+      <% when 'multiple_choice' %>
+        <% question.answers.each do |answer| %>
+          <p>
+            <%= check_box_tag question.id, answer.id %>
+            <%= answer.name %>
+          </p>
+        <% end %>
+      <% when 'text' %>
+        <%= text_area_tag question.id %>
+      <% end %>
+    <% end %>
+  </div>
     <%= link_to 'Edit this quiz', edit_quiz_path(@quiz), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">
       <%= button_to 'Destroy this quiz', quiz_path(@quiz), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     </div>
     <%= link_to 'Back to quizzes', quizzes_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  </div>
 </div>
