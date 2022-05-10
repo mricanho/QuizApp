@@ -16,9 +16,10 @@
     <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <<div data-controller="nested-form">
+  <<div data-controller="nested-form" data-nested-form-index-value="QUESTION_RECORD">
     <template data-nested-form-target='template'>
       <%= form.fields_for :questions, Question.new, child_index: 'TEMPLATE_RECORD' do |question| %>
+        QUESTION - QUESTION_RECORD
         <%= render 'question_fields', form: question %>
       <% end %>
     </template>
