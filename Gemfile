@@ -58,6 +58,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails'
+  gem "rails-erd"
+  gem "railroady"
 end
 
 group :development do

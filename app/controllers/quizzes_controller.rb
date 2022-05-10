@@ -1,5 +1,6 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: %i[index show]
 
   # GET /quizzes or /quizzes.json
   def index
