@@ -76,4 +76,8 @@ class QuizzesController < ApplicationController
       ]
     )
   end
+
+  def load_quizes
+    @quizes = Quiz.accessible_by(current_ability).order('created_at DESC')
+  end
 end

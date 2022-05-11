@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   enum role: %i[regular admin guest]
   after_initialize :set_default_role, if: :new_record?
-  
+
   def set_default_role
     self.role ||= :regular
   end
