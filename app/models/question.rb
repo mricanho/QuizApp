@@ -3,6 +3,8 @@ class Question < ApplicationRecord
   has_many :answers, dependent: :destroy
   accepts_nested_attributes_for :answers, allow_destroy: true
 
+  
+
   enum question_type: { single_choice: 0, multiple_choice: 1, text: 2 }
 
   def self.question_type_select

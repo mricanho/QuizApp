@@ -11,12 +11,17 @@
     </div>
   <% end %>
 
-  <div class="my-5">
+  <div class="my-3">
     <%= form.label :name %>
     <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <<div data-controller="nested-form" data-nested-form-index-value="QUESTION_RECORD">
+  <div class="my-3">
+    <%= form.label :category %>
+    <%= form.text_field :category, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div data-controller="nested-form" data-nested-form-index-value="QUESTION_RECORD">
     <template data-nested-form-target='template'>
       <%= form.fields_for :questions, Question.new, child_index: 'TEMPLATE_RECORD' do |question| %>
         QUESTION - QUESTION_RECORD
@@ -28,12 +33,13 @@
       <%= render 'question_fields', form: question %>
     <% end %>
 
-    <div data-nested-form-target="add_item">
-      <%= link_to "Add Question", "#", data: { action: "nested-form#add_association" } %>
-    </div>
+    <button data-nested-form-target="add_item">
+      <%= link_to "Add Question", "#", data: { action: "nested-form#add_association" }, class: "rounded-lg py-2 px-3 bg-blue-400 text-white inline-block font-medium mb-6"%>
+    </button>
   </div>
 
-  <div class="inline actions">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="actions text-center">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer mx-8" %>
+    <%= link_to 'Cancel', quizzes_path, class: "ml-2 rounded-lg py-3 px-5 bg-blue-400 text-white inline-block font-medium mx-8" %>
   </div>
 <% end %>

@@ -7,9 +7,9 @@
       <p>Welcome <%= current_user.email %>, you are <%= current_user.role %> user </p>
       <% if current_user.admin? %>
         <p> There are <%= User.count %> users in the website</p>
+        <%= link_to 'New quiz', new_quiz_path, class: "rounded-lg py-2 px-3 bg-blue-400 text-white block font-medium" %>
       <% end %>
-    <% end %>
-    <%= link_to 'New quiz', new_quiz_path, class: "rounded-lg py-2 px-3 bg-blue-400 text-white block font-medium" %>
+    <% end %>    
   </div>
   <div class="flex mx-10 mt-8 justify-center">
     

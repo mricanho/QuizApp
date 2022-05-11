@@ -2,11 +2,16 @@
   <p class="my-5">
     <strong class="block font-medium mb-1">Name:</strong>
     <%= quiz.name %>
+    <%= quiz.category %>
   </p>
-
+  
   <% if action_name != "show" %>
     <%= link_to "Show this quiz", quiz, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this quiz', edit_quiz_path(quiz), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <% if current_user and current_user.admin? %>
+        <%= link_to 'Edit this quiz', edit_quiz_path(quiz), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <% end %>
+
     <hr class="mt-6">
+
   <% end %>
 </div>
